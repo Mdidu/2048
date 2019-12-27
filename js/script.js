@@ -1,16 +1,8 @@
 /*
-* Gérer la fusion des valeur :
-* voir si les blocs touchent la limite de la zone ou le bloc touchant la limite pour savoir s'ils doivent bouger ou non puis faire spawn un bloc
-* détecter les mouvements via le clavier
-* à chaque fusion augmenter la variable score avec l'ajout du nombre de points lié  à la fusion des blocs
-*
-* Si on appuie sur la flèche du bas on compare tabPosition[0][3] avec tabPosition[1][3]  et on continue jusqu'à être en bas soit tabPosition[3][3]
-* ( COMMENCER PAR LE BAS EST SUREMENT MIEUX !!! )
-*
-Si on a déjà effectué une fusion sur l'élément alors il ne doit plus fusionner !!
-La position dans le tableau représente la position dans la surface de jeu, par exemple tab[0][0] est équivalent au div en haut à gauche
-*
-
+TODO = function loose à faire
+ rendre le jeu plus esthétique CSS !! + animation
+ rendre responsive
+ détecter les mouvements de doigt mobile ( en tout dernier !!)
 */
 var tabPosition = [
     [0, 0, 0, 0],
@@ -21,6 +13,8 @@ var tabNbSpawn = [2, 4];
 var valuePosition = [0, 1, 2, 3];
 var hit = 0;
 var score = 0;
+var moovement = false;
+var gameWin = false;
 
 function randomValue(id) {
     return id[Math.floor(Math.random() * id.length)];
@@ -41,41 +35,53 @@ function createNewTiles() {
     while(tabPosition[x][y] !== 0){
         x = randomValue(valuePosition);
         y = randomValue(valuePosition);
-        //console.log(tabPosition);
     }
 
     tabPosition[x][y] = value;
     console.log(tabPosition);
     $(".tile-container").append('<div class="tile tile'+ value +' tile-position-'+ x +'-'+ y +'">'+ value + '</div>');
 }
-//functin de placement des tuiles ( même position que dans le tableau)
-function placementTiles() {
 
+function removeTile(y, x) {
+    $(".tile-position-"+ y + "-" + x).remove();
+}
+function scoring(value) {
+    score = score + value;
+    $("#score").text('Score : '+ score);
+}
+function win() {
+    for(var i = 0; i < 4; i++){
+        for(var j = 0; j < 4; j++){
+            if(tabPosition[i][j] === 2048){
+                $("#res").text("Félicitation pour votre victoire vous pouvez continuer à jouer si l'envie vous en dit !");
+                gameWin = true;
+            }
+        }
+    }
+}
+function loose(){
+    $("#res").text("Vous avez perdu !");
+    //vérifier que plus aucun mouvement n'est possible
+}
+function reload(){
+    tabPosition = [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]];
+    hit = 0;
+    score = 0;
+
+    moovement = false;
+    gameWin = false;
+
+    $("#res").text("");
+    $("#score").text("Score : ");
+    $(".tile-container").children().remove();
+
+    createNewTiles();
+    createNewTiles();
 }
 
-$(document).keydown(function(e){
-
-    switch (e.key) {
-        case "ArrowDown":
-            verticalFusion(0, 1, 2, 3);
-            createNewTiles();
-            break;
-        case "ArrowUp":
-            verticalFusion(3, 2, 1, 0);
-            createNewTiles();
-            break;
-        case "ArrowLeft":
-            fusionHorizontal(3, 2, 1, 0);
-            createNewTiles();
-            break;
-        case "ArrowRight":
-            fusionHorizontal(0, 1, 2, 3);
-            createNewTiles();
-            break;
-        default:
-            break;
-    }
-
-});
 createNewTiles();
 createNewTiles();

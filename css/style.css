@@ -3,15 +3,10 @@ body {
     padding: 0;
     font-size: 30px;
 }
-.grid-row {
-    display: flex;
-}
 #gameZone {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /*justify-content: center;*/
-    /*align-items: center;*/
     width: 1000px;
     margin: 2%;
     margin-top: 50px;
@@ -22,132 +17,24 @@ body {
     position: absolute;
     z-index: 1;
 }
+.grid-row {
+     display: flex;
+ }
 .tile-container {
     z-index: 2;
 }
-
 .grid, .tile {
     width: 244px;
     height: 150px;
     display: inline-block;
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
     border: 3px solid black;
 }
 .tile {
-
     position: absolute;
 }
-.tile2 {
-    background: yellow;
-}
-
-.tile4 {
-    background: green;
-}
-
-.tile8 {
-    background: blue;
-}
-
-.tile16 {
-    background: purple;
-}
-
-.tile32 {
-    background: aqua;
-}
-
-.tile64 {
-    background: red;
-}
-
-.tile128 {
-    background: sienna;
-}
-
-.tile256 {
-    background: orangered;
-}
-.tile512 {
-    background: lavender;
-}
-.tile1024 {
-    background: brown;
-}
-.tile2048 {
-    background: seagreen;
-}
-
-.tile-position-0-0 {
-    top: 0;
-    left: 0;
-}
-.tile-position-0-1 {
-    top: 0;
-    left: 250px;
-}
-.tile-position-0-2 {
-    top: 0;
-    left: 500px;
-}
-.tile-position-0-3 {
-    top: 0;
-    left: 750px;
-}
-
-.tile-position-1-0 {
-    top: 156px;
-    left: 0;
-}
-.tile-position-1-1 {
-    top: 156px;
-    left: 250px;
-}
-.tile-position-1-2 {
-    top: 156px;
-    left: 500px;
-}
-.tile-position-1-3 {
-    top: 156px;
-    left: 750px;
-}
-
-.tile-position-2-0 {
-    top: 312px;
-    left: 0;
-}
-.tile-position-2-1 {
-    top: 312px;
-    left: 250px;
-}
-.tile-position-2-2 {
-    top: 312px;
-    left: 500px;
-}
-.tile-position-2-3 {
-    top: 312px;
-    left: 750px;
-}
-
-.tile-position-3-0 {
-    top: 468px;
-    left: 0;
-}
-.tile-position-3-1 {
-    top: 468px;
-    left: 250px;
-}
-.tile-position-3-2 {
-    top: 468px;
-    left: 500px;
-}
-.tile-position-3-3 {
-    top: 468px;
-    left: 750px;
-}
-#score {
+#score, #res {
     text-align: center;
-    margin-top: 700px;
+}
+#res {
+    margin-top: 650px;
 }
