@@ -55,12 +55,10 @@ h1 {
 @media(max-width: 1048px) {
     #gameZone {
         width: 800px;
-        margin-top: 28px;
         margin-left: 10%;
     }
 
     .grid, .tile {
-        font-size: 70px;
         width: 195px;
     }
 }
@@ -68,12 +66,10 @@ h1 {
 @media(max-width: 850px) {
     #gameZone {
         width: 600px;
-        margin-top: 28px;
         margin-left: 10%;
     }
 
     .grid, .tile {
-        font-size: 70px;
         width: 144.8px;
     }
 }
@@ -81,12 +77,10 @@ h1 {
 @media(max-width: 700px) {
     #gameZone {
         width: 500px;
-        margin-top: 28px;
         margin-left: 7.5%;
     }
 
     .grid, .tile {
-        font-size: 70px;
         width: 119.8px;
         height: 125px;
     }
@@ -95,12 +89,10 @@ h1 {
 @media(max-width: 420px) {
     #gameZone {
         width: 300px;
-        margin-top: 28px;
         margin-left: 7%;
     }
 
     .grid, .tile {
-        font-size: 70px;
         width: 72px;
         height: 90px;
     }
@@ -109,12 +101,10 @@ h1 {
 @media(max-width: 350px) {
     #gameZone {
         width: 300px;
-        margin-top: 28px;
         margin-left: 2%;
     }
 
     .grid, .tile {
-        font-size: 70px;
         width: 72px;
         height: 90px;
     }

@@ -1,3 +1,4 @@
+// computer event
 $("#replay").click(reload);
 
 $(document).keydown(function(e){
@@ -10,31 +11,22 @@ $(document).keydown(function(e){
             verticalFusion(3, 2, 1, 0);
             break;
         case "ArrowLeft":
-            fusionHorizontal(3, 2, 1, 0);
+            horizontalFusion(3, 2, 1, 0);
             break;
         case "ArrowRight":
-            fusionHorizontal(0, 1, 2, 3);
+            horizontalFusion(0, 1, 2, 3);
             break;
         default:
             return;
             break;
     }
-    postMoove();
+    turnEnd();
 });
-function postMoove(){
-    if(gameWin === false){
-        win();
-    }
 
-    if(moovement === true){
-        createNewTiles();
-        moovement = false;
-    }
-    loose();
-}
 // mobile event
-$(document).on("touchstart",startTouch);
-$(document).on("touchmove",moveTouch);
+var gameZone = $("#gameZone");
+gameZone.on("touchstart",startTouch);
+gameZone.on("touchmove",moveTouch);
 
 // Swipe Up / Down / Left / Right
 var initialX = null;
@@ -64,25 +56,23 @@ function moveTouch(e) {
         // sliding horizontally
         if (diffX > 0) {
             // swiped left
-            fusionHorizontal(3, 2, 1, 0);
-            postMoove();
+            horizontalFusion(3, 2, 1, 0);
         } else {
             // swiped right
-            fusionHorizontal(0, 1, 2, 3);
-            postMoove();
+            horizontalFusion(0, 1, 2, 3);
         }
     } else {
         // sliding vertically
         if (diffY > 0) {
             // swiped up
             verticalFusion(3, 2, 1, 0);
-            postMoove();
         } else {
             // swiped down
             verticalFusion(0, 1, 2, 3);
-            postMoove();
         }
     }
+
+    turnEnd();
 
     initialX = null;
     initialY = null;
