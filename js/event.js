@@ -34,65 +34,73 @@ function postMoove(){
     loose();
 }
 //mobile event
-// $(document).on( "swipeleft", function() {
-//     fusionHorizontal(3, 2, 1, 0);
-//     postMoove();
-// });
-// $(document).on( "swiperight", function() {
-//     fusionHorizontal(0, 1, 2, 3);
-//     postMoove();
-// } );
+$(document).on( "swipeleft", function() {
+
+    fusionHorizontal(3, 2, 1, 0);
+    postMoove();
+    alert("swipe left");
+});
+$(document).on( "swiperight", function() {
+
+    fusionHorizontal(0, 1, 2, 3);
+    postMoove();
+    alert("swipe right");
+} );
+
+$(document).on( "swipeup", function() {
+
+    verticalFusion(3, 2, 1, 0);
+    postMoove();
+    alert("swipe up");
+} );
+
+$(document).on( "swipedown", function() {
+
+    verticalFusion(0, 1, 2, 3);
+    postMoove();
+    alert("swipe down");
+} );
+
+// let touchstartX = 0;
+// let touchstartY = 0;
+// let touchendX = 0;
+// let touchendY = 0;
 //
-// $(document).on( "swipeup", function() {
-//     verticalFusion(3, 2, 1, 0);
-//     postMoove();
-// } );
+// const gestureZone = document.getElementById('main');
 //
-// $(document).on( "swipedown", function() {
-//     verticalFusion(0, 1, 2, 3);
-//     postMoove();
-// } );
-
-let touchstartX = 0;
-let touchstartY = 0;
-let touchendX = 0;
-let touchendY = 0;
-
-const gestureZone = document.getElementById('main');
-
-gestureZone.addEventListener('touchstart', function(event) {
-    touchstartX = event.changedTouches[0].screenX;
-    touchstartY = event.changedTouches[0].screenY;
-}, false);
-
-gestureZone.addEventListener('touchend', function(event) {
-    touchendX = event.changedTouches[0].screenX;
-    touchendY = event.changedTouches[0].screenY;
-    handleGesture();
-}, false);
-
-function handleGesture() {
-    if (touchendX <= touchstartX) {
-        fusionHorizontal(3, 2, 1, 0);
-        postMoove();
-    }
-
-    if (touchendX >= touchstartX) {
-        fusionHorizontal(0, 1, 2, 3);
-        postMoove();
-    }
-
-    if (touchendY <= touchstartY) {
-        verticalFusion(3, 2, 1, 0);
-        postMoove();
-    }
-
-    if (touchendY >= touchstartY) {
-        verticalFusion(0, 1, 2, 3);
-        postMoove();
-    }
-
-    if (touchendY === touchstartY) {
-        console.log('Tap');
-    }
-}
+// gestureZone.addEventListener('touchstart', function(event) {
+//     touchstartX = event.changedTouches[0].screenX;
+//     touchstartY = event.changedTouches[0].screenY;
+// }, false);
+//
+// gestureZone.addEventListener('touchend', function(event) {
+//     touchendX = event.changedTouches[0].screenX;
+//     touchendY = event.changedTouches[0].screenY;
+//     handleGesture();
+// }, false);
+//
+// function handleGesture() {
+//     if (touchendX <= touchstartX) {
+//         fusionHorizontal(3, 2, 1, 0);
+//         postMoove();
+//     }
+//
+//     if (touchendX >= touchstartX) {
+//         fusionHorizontal(0, 1, 2, 3);
+//         postMoove();
+//     }
+//
+//     if (touchendY <= touchstartY) {
+//         verticalFusion(3, 2, 1, 0);
+//         postMoove();
+//     }
+//
+//     if (touchendY >= touchstartY) {
+//         verticalFusion(0, 1, 2, 3);
+//         postMoove();
+//     }
+//
+//     if (touchendY === touchstartY) {
+//         console.log('Tap');
+//     }
+// }
