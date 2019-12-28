@@ -34,31 +34,29 @@ function postMoove(){
     loose();
 }
 //mobile event
-$(document).on( "swipeleft", function() {
+// $(document).on( "swipedown", function() {
+//     verticalFusion(0, 1, 2, 3);
+//     postMoove();
+//     alert("swipe down");
+// });
+// $(document).on( "swipeup", function() {
+//     verticalFusion(3, 2, 1, 0);
+//     postMoove();
+//     alert("swipe up");
+// } );
 
-    fusionHorizontal(3, 2, 1, 0);
-    postMoove();
-    alert("swipe left");
-});
-$(document).on( "swiperight", function() {
+$('#main').swiperight(function() {
 
     fusionHorizontal(0, 1, 2, 3);
     postMoove();
     alert("swipe right");
 } );
 
-$(document).on( "swipeup", function() {
+$('#main').swipeleft(function() {
 
-    verticalFusion(3, 2, 1, 0);
+    fusionHorizontal(3, 2, 1, 0);
     postMoove();
-    alert("swipe up");
-} );
-
-$(document).on( "swipedown", function() {
-
-    verticalFusion(0, 1, 2, 3);
-    postMoove();
-    alert("swipe down");
+    alert("swipe left");
 } );
 
 // let touchstartX = 0;
