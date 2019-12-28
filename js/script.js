@@ -1,7 +1,6 @@
 /*
-TODO = function loose à faire
- rendre le jeu plus esthétique CSS !! + animation
- rendre responsive
+TODO =
+ animer le jeu?
  détecter les mouvements de doigt mobile ( en tout dernier !!)
 */
 var tabPosition = [
@@ -38,7 +37,7 @@ function createNewTiles() {
     }
 
     tabPosition[x][y] = value;
-    console.log(tabPosition);
+
     $(".tile-container").append('<div class="tile tile'+ value +' tile-position-'+ x +'-'+ y +'">'+ value + '</div>');
 }
 
@@ -55,13 +54,33 @@ function win() {
             if(tabPosition[i][j] === 2048){
                 $("#res").text("Félicitation pour votre victoire vous pouvez continuer à jouer si l'envie vous en dit !");
                 gameWin = true;
+                return;
             }
         }
     }
 }
 function loose(){
-    $("#res").text("Vous avez perdu !");
-    //vérifier que plus aucun mouvement n'est possible
+    for(var i = 0; i < 4; i++){
+        for(var j = 0; j < 4; j++){
+            if(tabPosition[i][j] === 0){
+                return;
+            }
+        }
+    }
+
+    //condition comparaison valeur horizontal
+    if(tabPosition[0][3] !== tabPosition[0][2] && tabPosition[0][2] !== tabPosition[0][1] && tabPosition[0][1] !== tabPosition[0][0]
+        &&  tabPosition[1][3] !== tabPosition[1][2] && tabPosition[1][2] !== tabPosition[1][1] && tabPosition[1][1] !== tabPosition[1][0]
+        &&  tabPosition[2][3] !== tabPosition[2][2] && tabPosition[2][2] !== tabPosition[2][1] && tabPosition[2][1] !== tabPosition[2][0]
+        &&  tabPosition[3][3] !== tabPosition[3][2] && tabPosition[3][2] !== tabPosition[3][1] && tabPosition[3][1] !== tabPosition[3][0]){
+        //condition comparaison valeur vertical
+        if(tabPosition[0][3] !== tabPosition[1][3] && tabPosition[0][2] !== tabPosition[1][2] && tabPosition[0][1] !== tabPosition[1][1] && tabPosition[0][0] !== tabPosition[1][0]
+            && tabPosition[1][3] !== tabPosition[2][3] && tabPosition[1][2] !== tabPosition[2][2] && tabPosition[1][1] !== tabPosition[2][1] && tabPosition[1][0] !== tabPosition[2][0]
+            && tabPosition[2][3] !== tabPosition[3][3] && tabPosition[2][2] !== tabPosition[3][2] && tabPosition[2][1] !== tabPosition[3][1] && tabPosition[2][0] !== tabPosition[3][0]){
+
+            $("#res").text("Vous avez perdu !");
+        }
+    }
 }
 function reload(){
     tabPosition = [

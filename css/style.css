@@ -2,21 +2,28 @@ body {
     margin: 0;
     padding: 0;
     font-size: 30px;
+    text-align: center;
+    background: darkgrey;
+}
+h1 {
+    margin: 0;
+    padding: 0;
 }
 #gameZone {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 1000px;
-    margin: 2%;
-    margin-top: 50px;
-    margin-left: 20%;
-    border: 3px solid black;
+    margin-top: 28px;
+    margin-left: 10%;
 }
 .grid-container, .tile-container {
     position: absolute;
     z-index: 1;
 }
+.grid-container {
+    background: gray;
+ }
 .grid-row {
      display: flex;
  }
@@ -24,17 +31,91 @@ body {
     z-index: 2;
 }
 .grid, .tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
     width: 244px;
     height: 150px;
-    display: inline-block;
     border: 3px solid black;
 }
 .tile {
     position: absolute;
 }
+#score {
+    margin-right: 30px;
+}
 #score, #res {
     text-align: center;
 }
-#res {
-    margin-top: 650px;
+#score, #replay {
+    display: inline;
+}
+
+@media(max-width: 1048px) {
+    #gameZone {
+        width: 800px;
+        margin-top: 28px;
+        margin-left: 10%;
+    }
+
+    .grid, .tile {
+        font-size: 70px;
+        width: 195px;
+    }
+}
+
+@media(max-width: 850px) {
+    #gameZone {
+        width: 600px;
+        margin-top: 28px;
+        margin-left: 10%;
+    }
+
+    .grid, .tile {
+        font-size: 70px;
+        width: 144.8px;
+    }
+}
+
+@media(max-width: 700px) {
+    #gameZone {
+        width: 500px;
+        margin-top: 28px;
+        margin-left: 7.5%;
+    }
+
+    .grid, .tile {
+        font-size: 70px;
+        width: 119.8px;
+        height: 125px;
+    }
+}
+
+@media(max-width: 420px) {
+    #gameZone {
+        width: 300px;
+        margin-top: 28px;
+        margin-left: 7%;
+    }
+
+    .grid, .tile {
+        font-size: 70px;
+        width: 72px;
+        height: 90px;
+    }
+}
+
+@media(max-width: 350px) {
+    #gameZone {
+        width: 300px;
+        margin-top: 28px;
+        margin-left: 2%;
+    }
+
+    .grid, .tile {
+        font-size: 70px;
+        width: 72px;
+        height: 90px;
+    }
 }

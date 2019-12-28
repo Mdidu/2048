@@ -6,8 +6,9 @@ function verticalPlacement(y, x, y2) {
     $(".tile-position-" + y2 + "-"+ x).addClass("tile-position-" + y + "-"+ x).removeClass("tile-position-" + y2 + "-"+ x);
     moovement = true;
 }
-function newValue(y, x, exValue) {
+function newValue(y, x) {
     var value = tabPosition[y][x];
+    var exValue = value / 2;
     if(value === 0){
         return;
     }
