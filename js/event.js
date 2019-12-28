@@ -34,12 +34,12 @@ function postMoove(){
     loose();
 }
 
-var container = $("#gameZone");
+var container = $("body");
 
-// container.addEventListener("touchstart", startTouch, false);
-container.touchstart(startTouch, false);
-container.touchmove(moveTouch, false);
-// container.addEventListener("touchmove", moveTouch, false);
+container.addEventListener("touchstart", startTouch, false);
+// container.touchstart(startTouch, false);
+// container.touchmove(moveTouch, false);
+container.addEventListener("touchmove", moveTouch, false);
 
 // Swipe Up / Down / Left / Right
 var initialX = null;
