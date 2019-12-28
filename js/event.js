@@ -33,6 +33,72 @@ function postMoove(){
     }
     loose();
 }
+
+var container = $("#gameZone");
+
+// container.addEventListener("touchstart", startTouch, false);
+container.touchstart(startTouch, false);
+container.touchmove(moveTouch, false);
+// container.addEventListener("touchmove", moveTouch, false);
+
+// Swipe Up / Down / Left / Right
+var initialX = null;
+var initialY = null;
+
+function startTouch(e) {
+    initialX = e.touches[0].clientX;
+    initialY = e.touches[0].clientY;
+}
+
+function moveTouch(e) {
+    if (initialX === null) {
+        return;
+    }
+
+    if (initialY === null) {
+        return;
+    }
+
+    var currentX = e.touches[0].clientX;
+    var currentY = e.touches[0].clientY;
+
+    var diffX = initialX - currentX;
+    var diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        // sliding horizontally
+        if (diffX > 0) {
+            // swiped left
+            fusionHorizontal(3, 2, 1, 0);
+            postMoove();
+            alert("swipe left");
+        } else {
+            // swiped right
+            fusionHorizontal(0, 1, 2, 3);
+            postMoove();
+            alert("swipe right");
+        }
+    } else {
+        // sliding vertically
+        if (diffY > 0) {
+            // swiped up
+            verticalFusion(3, 2, 1, 0);
+            postMoove();
+            alert("swipe up");
+        } else {
+            // swiped down
+            verticalFusion(0, 1, 2, 3);
+            postMoove();
+            alert("swipe down");
+        }
+    }
+
+    initialX = null;
+    initialY = null;
+
+    e.preventDefault();
+}
+
 //mobile event
 // $(document).on( "swipedown", function() {
 //     verticalFusion(0, 1, 2, 3);
@@ -45,19 +111,19 @@ function postMoove(){
 //     alert("swipe up");
 // } );
 
-$('#main').swiperight(function() {
-
-    fusionHorizontal(0, 1, 2, 3);
-    postMoove();
-    alert("swipe right");
-} );
-
-$('#main').swipeleft(function() {
-
-    fusionHorizontal(3, 2, 1, 0);
-    postMoove();
-    alert("swipe left");
-} );
+// $('#main').swiperight(function() {
+//
+//     fusionHorizontal(0, 1, 2, 3);
+//     postMoove();
+//     alert("swipe right");
+// } );
+//
+// $('#main').swipeleft(function() {
+//
+//     fusionHorizontal(3, 2, 1, 0);
+//     postMoove();
+//     alert("swipe left");
+// } );
 
 // let touchstartX = 0;
 // let touchstartY = 0;
