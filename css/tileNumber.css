@@ -38,3 +38,15 @@
 .tile2048 {
     background: seagreen;
 }
+.tile4096 {
+    background: pink;
+}
+.tile8192 {
+    background: maroon;
+}
+.tile16384 {
+    background: olive;
+}
+.tile32768 {
+    background: violet;
+}
